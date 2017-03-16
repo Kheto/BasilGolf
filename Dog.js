@@ -6,6 +6,8 @@ function Dog(){
   this.player.body.gravity.y = 0;
   this.player.body.collideWorldBounds = true;
 
+  this.hasBall = false
+
   this.update = function(){
     this.player.body.velocity.x = 0;
     if(cursors.left.isDown){
