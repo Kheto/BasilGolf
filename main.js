@@ -29,6 +29,12 @@ function update() {
 }
 
 function pickUpBall(playerSprite, ballSprite){
-  ball.respawn();
-  //console.log("yay");
+  //ball.respawn();
+	player.hasBall = true;
+	ball.pickUp();
+}
+
+function dropBall(){
+	ball = new Ball();
+  console.log("yay");
 }

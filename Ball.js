@@ -6,13 +6,16 @@ function Ball(){
   this.sprite.body.immovable = true;
   this.sprite.body.moves = false;
 
-  this.respawn = function(){
-    //this.sprite.body.immovable = false;
-    this.sprite.y = Math.floor(Math.random()*game.height);
-    this.sprite.x = Math.floor(Math.random()*game.width);
-    this.sprite.body.velocity.x = 0;
-    this.sprite.body.velocity.y= 0;
+  this.pickUp = function(){
+    // this.sprite.y = Math.floor(Math.random()*game.height);
+    // this.sprite.x = Math.floor(Math.random()*game.width);
+    // this.sprite.body.velocity.x = 0;
+    // this.sprite.body.velocity.y= 0;
+    this.sprite.kill();
 
-    //this.sprite.body.immovable = true;
+  }
+
+  this.drop = function(x, y){
+
   }
 }
