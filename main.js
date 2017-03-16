@@ -1,7 +1,6 @@
 var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 var player, ball;
 var cursors;
-var ns, ew;
 const MOVE_SPEED = 200;
 
 function preload() {
@@ -36,5 +35,5 @@ function pickUpBall(playerSprite, ballSprite){
 
 function dropBall(){
 	ball = new Ball();
-  console.log("yay");
+	ball.drop(player.getXDir(), player.getYDir());
 }
