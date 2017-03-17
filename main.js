@@ -6,6 +6,7 @@ const MOVE_SPEED = 200;
 function preload() {
 	game.load.spritesheet('dog', 'assets/basil.png', 80, 80);
   game.load.image('ball', 'assets/ball.png');
+	game.load.spritesheet('hole', 'assets/hole.png', 18, 18);
 }
 
 function create() {
@@ -15,11 +16,13 @@ function create() {
   //player = game.add.sprite(50, 50, 'dog', 0);
   player = new Dog();
   ball = new Ball();
+	hole = new Hole();
   cursors = game.input.keyboard.createCursorKeys();
 }
 
 function update() {
   game.physics.arcade.collide(player.sprite, ball.sprite, pickUpBall, null, this);
+	game.physics.arcade.collide(hole.sprite, ball.sprite, score, null, this);
 
   //game.physics.arcade.overlap(player.sprite, ball.sprite, pickUpBall, null, this);
   ns = false;
@@ -36,4 +39,11 @@ function pickUpBall(playerSprite, ballSprite){
 function dropBall(){
 	ball = new Ball();
 	ball.drop(player.getXDir(), player.getYDir());
+}
+
+function score(){
+	hole.sprite.kill();
+	ball.sprite.kill();
+	hole = new Hole();
+	ball = new Ball();
 }
