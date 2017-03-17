@@ -15,7 +15,7 @@ function Dog(){
 
     //Doin' it the long way!
     //If it looks stupid and it works, it's probably still stupid.
-    this.sprite.scale.y = 1;
+    //this.sprite.scale.y = 1;
 
     if(cursors.right.isDown){ //Pressing Right
       //Moving West
@@ -24,6 +24,7 @@ function Dog(){
       if(cursors.up.isDown){ //Pressing Right and Up
         //Moving North West
         this.sprite.frame = 1;
+        this.sprite.scale.y = 1;
       }else if(cursors.down.isDown){ //Pressing Right and Down
         //Moving South West
         this.sprite.frame = 1;
@@ -43,6 +44,7 @@ function Dog(){
       }else if(cursors.down.isDown){ //Pressing Left and Down
         //Moving South West
         this.sprite.frame = 1;
+        this.sprite.scale.y = 1;
       }else{
         this.yDir = 0;
         this.sprite.frame = 2;
