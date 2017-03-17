@@ -18,15 +18,15 @@ function Dog(){
     //If it looks stupid and it works, it's probably still stupid.
     //this.sprite.scale.y = 1;
 
-    if(cursors.right.isDown){ //Pressing Right
+    if(cursors.right){ //Pressing Right
       //Moving West
       this.sprite.body.velocity.x = MOVE_SPEED;
       this.xDir = 1;
-      if(cursors.up.isDown){ //Pressing Right and Up
+      if(cursors.up){ //Pressing Right and Up
         //Moving North West
         this.sprite.frame = 1;
         this.sprite.scale.y = 1;
-      }else if(cursors.down.isDown){ //Pressing Right and Down
+      }else if(cursors.down){ //Pressing Right and Down
         //Moving South West
         this.sprite.frame = 1;
         this.sprite.scale.y = -1;
@@ -35,14 +35,14 @@ function Dog(){
         this.yDir = 0;
         this.sprite.frame = 2;
       }
-    }else if(cursors.left.isDown){
+    }else if(cursors.left){
       this.sprite.body.velocity.x = -MOVE_SPEED; //Moving West
       this.xDir = -1;
-      if(cursors.up.isDown){ //Pressing Left and Down
+      if(cursors.up){ //Pressing Left and Down
         //Moving South West
         this.sprite.frame = 1;
         this.sprite.scale.y = -1;
-      }else if(cursors.down.isDown){ //Pressing Left and Down
+      }else if(cursors.down){ //Pressing Left and Down
         //Moving South West
         this.sprite.frame = 1;
         this.sprite.scale.y = 1;
@@ -53,15 +53,15 @@ function Dog(){
     }
 
     this.sprite.body.velocity.y = 0;
-    if(cursors.up.isDown){
-      if(!(cursors.left.isDown || cursors.right.isDown)){
+    if(cursors.up){
+      if(!(cursors.left || cursors.right)){
         this.sprite.frame = 0;
         this.xDir = 0;
       }
       this.sprite.body.velocity.y = -MOVE_SPEED;
       this.yDir = -1;
-    }else if(cursors.down.isDown){
-      if(!(cursors.left.isDown || cursors.right.isDown)){
+    }else if(cursors.down){
+      if(!(cursors.left || cursors.right)){
         this.sprite.frame = 0;
         this.xDir = 0;
       }
