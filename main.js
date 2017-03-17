@@ -11,10 +11,16 @@ function preload() {
   game.load.image('ball', 'assets/ball.png');
   game.load.image('green', 'assets/green.png');
 	game.load.spritesheet('hole', 'assets/hole.png', 18, 18);
+
+  game.load.image('vjoy_base', 'assets/base.png');
+  game.load.image('vjoy_body', 'assets/body.png');
+  game.load.image('vjoy_cap', 'assets/cap.png');
 }
 
 function create() {
   game.physics.startSystem(Phaser.Physics.ARCADE);
+  game.vjoy = game.plugins.add(Phaser.Plugin.VJoy);
+  game.vjoy.inputEnable(0, 400, 0, 400);
   game.stage.backgroundColor = '#3eaf01'
 
   //player = game.add.sprite(50, 50, 'dog', 0);
@@ -22,7 +28,6 @@ function create() {
   ball = new Ball();
 	green = new Green();
 	hole = new Hole(green.sprite.x, green.sprite.y);
-  cursors = game.input.keyboard.createCursorKeys();
 	scoreCounter = 0;
 
 	text = game.add.text(40, 40, "Score: 0", {
@@ -33,6 +38,7 @@ function create() {
 }
 
 function update() {
+	cursors = game.vjoy.cursors;
 	game.physics.arcade.collide(hole.sprite, ball.sprite, score, null, this);
 	playerOnGreen = game.physics.arcade.overlap(player.sprite, green.sprite, dropBall, null, this);
 	if(!playerOnGreen){
