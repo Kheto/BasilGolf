@@ -1,7 +1,7 @@
 function Green(){
-  var randHeight = Math.random()*game.height-10;
-  var randWidth = Math.random()*game.width-10;
-  this.sprite = game.add.sprite(randHeight, randWidth , 'green', 1);
+  var randWidth = getRandomInt(80, game.width-80);
+  var randHeight = getRandomInt(game.height/2 + 80, game.height-80);
+  this.sprite = game.add.sprite(randWidth, randHeight , 'green', 1);
   this.sprite.anchor.setTo(0.5, 0.5)
   game.physics.enable(this.sprite)
   this.sprite.body.immovable = true;

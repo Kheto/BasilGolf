@@ -1,8 +1,9 @@
-var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+var game = new Phaser.Game(600, 900, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 var player, ball;
 var cursors;
-var dogbol;
+var playerOnGreen;
 const MOVE_SPEED = 200;
+const BALL_SPEED = 250;
 
 function preload() {
 	game.load.spritesheet('dog', 'assets/basil.png', 80, 80);
@@ -24,13 +25,11 @@ function create() {
 }
 
 function update() {
-  dogbol = game.physics.arcade.collide(player.sprite, ball.sprite, pickUpBall, null, this);
 	game.physics.arcade.collide(hole.sprite, ball.sprite, score, null, this);
-	game.physics.arcade.collide(player.sprite, green.sprite, null, null, this);
-
-  //game.physics.arcade.overlap(player.sprite, ball.sprite, pickUpBall, null, this);
-  ns = false;
-  ew = false;
+	playerOnGreen = game.physics.arcade.overlap(player.sprite, green.sprite, dropBall, null, this);
+	if(!playerOnGreen){
+		game.physics.arcade.overlap(player.sprite, ball.sprite, pickUpBall, null, this);
+	}
   player.update();
 }
 
@@ -41,8 +40,11 @@ function pickUpBall(playerSprite, ballSprite){
 }
 
 function dropBall(){
-	ball = new Ball();
-	ball.drop(player.getXDir(), player.getYDir());
+	if(player.hasBall){
+		ball = new Ball();
+		player.takeBall();
+		ball.drop(player.getXDir(), player.getYDir());
+	}
 }
 
 function score(){
@@ -52,4 +54,10 @@ function score(){
 	ball = new Ball();
 	green = new Green();
 	hole = new Hole(green.sprite.x-6, green.sprite.y-6);
+}
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
 }

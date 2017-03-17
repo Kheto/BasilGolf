@@ -1,6 +1,6 @@
 function Ball(){
-  var randHeight = Math.random()*game.height;
-  var randWidth = Math.random()*game.width;
+  var randWidth = getRandomInt(20, game.width-80);
+  var randHeight = getRandomInt(20, (game.height-game.height/2)-80);
   this.sprite = game.add.sprite(randWidth,randHeight , 'ball');
   game.physics.enable(this.sprite)
   this.sprite.body.immovable = true;
@@ -21,10 +21,9 @@ function Ball(){
     this.sprite.body.immovable = false;
     this.sprite.x = player.sprite.x + x*50;
     this.sprite.y = player.sprite.y + y*50;
-    console.log(y*40, x*40);
 
-    this.sprite.body.velocity.x = x*150;
-    this.sprite.body.velocity.y = y*150;
+    this.sprite.body.velocity.x = x*BALL_SPEED;
+    this.sprite.body.velocity.y = y*BALL_SPEED;
     this.sprite.body.moves = true;
   }
 }

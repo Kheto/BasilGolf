@@ -12,6 +12,7 @@ function Dog(){
 
   this.update = function(){
     this.sprite.body.velocity.x = 0;
+    this.sprite.bringToTop();
 
     //Doin' it the long way!
     //If it looks stupid and it works, it's probably still stupid.
@@ -68,11 +69,14 @@ function Dog(){
       this.yDir = 1;
     }
 
-    if(this.sprite.body.velocity.y == 0 && this.sprite.body.velocity.x == 0 && this.hasBall){
-      this.hasBall = false;
+    if(this.sprite.body.velocity.y == 0 && this.sprite.body.velocity.x == 0){
       dropBall();
     }
 
+  }
+
+  this.takeBall = function(){
+    this.hasBall = false;
   }
 
   this.getXDir = function(){
