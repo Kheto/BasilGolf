@@ -39,6 +39,7 @@ function create() {
 
 function update() {
 	cursors = game.vjoy.cursors;
+	console.log("UP: " + cursors.up, "DOWN: " + cursors.down, "LEFT: "+ cursors.left, "RIGHT:"+cursors.right);
 	game.physics.arcade.collide(hole.sprite, ball.sprite, score, null, this);
 	playerOnGreen = game.physics.arcade.overlap(player.sprite, green.sprite, dropBall, null, this);
 	if(!playerOnGreen){

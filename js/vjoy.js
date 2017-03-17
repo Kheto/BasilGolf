@@ -146,10 +146,10 @@
     this.speed.y = parseInt((deltaY / maxDistanceInPixels) * 100 * -1, 10);
 
 
-    this.cursors.up = (deltaY < 0);
-    this.cursors.down = (deltaY > 0);
-    this.cursors.left = (deltaX < 0);
-    this.cursors.right = (deltaX > 0);
+    this.cursors.up = (deltaY < -45);
+    this.cursors.down = (deltaY > 45);
+    this.cursors.left = (deltaX < -45);
+    this.cursors.right = (deltaX > 45);
 
     this.imageGroup.forEach(function (e, i) {
       e.cameraOffset.x = initialPoint.x + (deltaX) * i / 3;
