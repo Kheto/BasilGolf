@@ -72,7 +72,6 @@ function Dog(){
       this.hasBall = false;
       dropBall();
     }
-    console.log(this.xDir, this.yDir)
 
   }
 
