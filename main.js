@@ -1,6 +1,7 @@
 var game = new Phaser.Game(600, 900, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 var player, ball;
 var cursors;
+var scoreCounter;
 var playerOnGreen;
 const MOVE_SPEED = 200;
 const BALL_SPEED = 250;
@@ -22,6 +23,13 @@ function create() {
 	green = new Green();
 	hole = new Hole(green.sprite.x, green.sprite.y);
   cursors = game.input.keyboard.createCursorKeys();
+	scoreCounter = 0;
+
+	text = game.add.text(40, 40, "Score: 0", {
+		font: "24px Arial",
+		fill: "#ffff",
+		align: "center"
+	});
 }
 
 function update() {
@@ -51,6 +59,8 @@ function score(){
 	hole.sprite.kill();
 	ball.sprite.kill();
 	green.sprite.kill();
+	scoreCounter += 1;
+	text.setText("Score: " + scoreCounter);
 	ball = new Ball();
 	green = new Green();
 	hole = new Hole(green.sprite.x-6, green.sprite.y-6);
