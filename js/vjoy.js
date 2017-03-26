@@ -31,7 +31,7 @@
   Phaser.Plugin.VJoy.prototype.constructor = Phaser.Plugin.VJoy;
 
   Phaser.Plugin.VJoy.prototype.settings = {
-    maxDistanceInPixels: 200,
+    maxDistanceInPixels: 100,
     singleDirection: false
   };
 
