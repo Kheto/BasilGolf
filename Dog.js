@@ -69,9 +69,9 @@ function Dog(){
       this.yDir = 1;
     }
 
-    if(this.sprite.body.velocity.y == 0 && this.sprite.body.velocity.x == 0){
-      dropBall();
-    }
+    // if(this.sprite.body.velocity.y == 0 && this.sprite.body.velocity.x == 0){
+    //   dropBall();
+    // }
 
   }
 

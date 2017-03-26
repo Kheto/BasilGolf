@@ -20,7 +20,8 @@ function preload() {
 function create() {
   game.physics.startSystem(Phaser.Physics.ARCADE);
   game.vjoy = game.plugins.add(Phaser.Plugin.VJoy);
-  game.vjoy.inputEnable(0, 400, 0, 400);
+	game.vjoy.input.onUp.add(dropBall, game.vjoy)
+  game.vjoy.inputEnable();
   game.stage.backgroundColor = '#3eaf01'
 
   //player = game.add.sprite(50, 50, 'dog', 0);
@@ -60,6 +61,7 @@ function dropBall(){
 		ball.drop(player.getXDir(), player.getYDir());
 	}
 }
+
 
 function score(){
 	hole.sprite.kill();

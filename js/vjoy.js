@@ -11,6 +11,7 @@
     Phaser.Plugin.call(this, game, parent);
 
     this.isInTheZone = isInsideTheZone.bind(this);
+    this.isActive = false;
 
     this.input = this.game.input;
     this.imageGroup = [];
@@ -55,6 +56,7 @@
     y2 = y2 || this.game.height;
     this.zone = new Phaser.Rectangle(x1, y1, x2, y2);
     this.input.onDown.add(createCompass, this);
+    this.input.onUp.add(removeCompass, this);
   };
 
   Phaser.Plugin.VJoy.prototype.inputDisable = function () {
@@ -74,6 +76,7 @@
     }
 
     this.pointer = pointer;
+    this.isActive = true;
 
     this.imageGroup.forEach(function (e) {
       e.visible = true;
@@ -104,6 +107,7 @@
 
     this.preUpdate = empty;
     this.pointer = null;
+    this.isActive = false;
   };
 
   var empty = function () {
